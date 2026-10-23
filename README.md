@@ -1,181 +1,155 @@
-<p align="center"><img src=".github/brand/hero.png" alt="تلفزيونك · UrTV" width="100%"></p>
+<div align="center">
 
-<h1 align="center">تلفازك · TilfazTV</h1>
-<p align="center"><b>المشروع والمطور الرئيسي: Medo B (<a href="https://github.com/ahmedail05">@ahmedail05</a>)</b></p>
+  <h1>تلفازك · TilfazTV 🇶🇦</h1>
+  <p><b>الواجهة القطرية الذكية وشاشة التوقف الفاخرة لأجهزة Android TV و Google TV</b></p>
+  <p>المشروع والمطور الرئيسي: <b><a href="https://github.com/ahmedail05">Medo B (@ahmedail05)</a></b></p>
 
-<p align="center" dir="rtl">واجهة رئيسية عربية وشاشة توقف لتلفزيونات Android TV و Google TV، مخصصة بإصدارات قطر الوطنية والمظهر الملكي وثيم نور (آية وحديث اليوم)، مع تسريع آمن للتلفزيون.<br>يركّبها لك مثبت ويندوز بنقرة واحدة.</p>
-
-<p align="center">An Arabic home screen and screensaver for Android TV / Google TV, featuring Qatar National, Royal, and Noor editions with a smart auto-arranging dock.<br>Maintained by <b>Medo B</b>.</p>
-
-<p align="center"><img src=".github/screens/before-after-home.jpg" alt="Before: Google TV home. After: the تلفزيونك home screen" width="100%"></p>
-<p align="center"><img src=".github/screens/before-after-screensaver.jpg" alt="Before: the Google screensaver. After: شاشة تلفزيونك" width="100%"></p>
-
-<div dir="rtl">
-
-## ركّبه في 3 خطوات
-
-### ① التلفزيون
-الإعدادات ← حول ← اضغط OK على **Build** سبع مرات. بعدها روح إلى **خيارات المطوّر** ← شغّل **USB debugging**.
-
-### ② كمبيوتر على نفس الواي فاي، وعليه واحد من هذي
-
-| **Codex** (OpenAI) | **Claude Code** (Anthropic) |
-|---|---|
-| مجاني بحساب ChatGPT | يحتاج اشتراك Claude Pro (20$ بالشهر) |
-| حمّل تطبيق Codex | حمّل تطبيق Claude ← تبويب **Code** |
-| الموافقات: اختر **«Approve for me»** | الموافقات: **Allow** للمهمة كلها |
-
-<sub>ويندوز: ركّب Git وPython أول (`winget install Git.Git Python.Python.3.12`). Gemini CLI مجاني وناس قالوا يشتغل؛ ما جرّبناه.</sub>
-
-### ③ الصق هذا
-
-> ركّب تلفزيوني من https://github.com/tshi-dev/UrTV: انسخ المستودع واتبع `docs/SETUP-PROMPT.md` خطوة بخطوة. أنت على كمبيوتر متصل بنفس شبكة الواي فاي حقت التلفزيون.
-
-#### وش يصير بعد اللصق؟
-يسألك عن **مدينتك** و**أنديتك**، والتلفزيون يسألك **Allow** مرة وحدة، وبعدها خلّه يشتغل: 40 دقيقة وكم إعادة تشغيل.
-
-#### بترجعه مثل ما كان؟
-نعم، بأي وقت: تطبيقاتنا تنحذف، واللي أطفأناه يرجع، وشاشة التلفزيون الأصلية ترجع.
-<sub>`optimize/reset.sh`</sub>
-
-#### نزلت نسخة جديدة؟
-حدّث التطبيقين وإعداداتك كلها باقية. الشاشة نفسها تتحدّث لحالها. وصف «تحديث الشاشة الآن» في الإعدادات يخبرك متى يوجد إصدار جديد.
-<sub>`optimize/install.sh all`</sub>
-
-#### نزل تحديث للنظام وقفل تطبيقنا؟
-أعد الإعداد كله بأمر واحد، وإعداداتك باقية.
-<sub>`optimize/run.sh again`</sub>
+  <p>
+    <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/TilfazTV-Qatar_Edition-580F23?style=for-the-badge&logo=android&logoColor=white" alt="Qatar Edition" /></a>
+    <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/Theme-Al--Adaam_%26_Royal-C5A059?style=for-the-badge" alt="Al-Adaam & Royal Theme" /></a>
+    <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/Platform-Android_TV_%7C_Google_TV-000000?style=for-the-badge&logo=google" alt="Google TV & Android TV" /></a>
+    <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/License-MIT_%26_Apache-2ea44f?style=for-the-badge" alt="License" /></a>
+    <a href="https://github.com/ahmedail05"><img src="https://img.shields.io/badge/Maintained_by-Medo_B-8A1538?style=for-the-badge&logo=github" alt="Maintainer" /></a>
+  </p>
 
 </div>
 
-## Set it up in 3 steps
+---
 
-### ① The TV
-Settings → About → press OK on **Build** 7 times. Then go to **Developer options** → turn on **USB debugging**.
+<div dir="rtl">
 
-### ② A computer on the same Wi-Fi, with one of these
+## 🌟 نبذة عن المشروع
 
-| **Codex** (OpenAI) | **Claude Code** (Anthropic) |
-|---|---|
-| Free with a ChatGPT account | Needs Claude Pro ($20/month) |
-| Download the Codex app | Download the Claude app → **Code** tab |
-| Approvals: choose **«Approve for me»** | Approvals: **Allow** for the whole task |
+**«تلفازك · TilfazTV»** هو جيل متطور ومخصص بالكامل من واجهات التلفاز الذكية وشاشات التوقف الفاخرة الموجهة للشاشات وأجهزة البث (Android TV و Chromecast with Google TV).
 
-<sub>Windows: install Git and Python first (`winget install Git.Git Python.Python.3.12`). Gemini CLI is free and reported to work; not tested by us.</sub>
+تمت إعادة هندسة النظام ليجمع بين **الهوية الوطنية القطرية الأصيلة** والتصميم العصري، مع الحفاظ على نقاء الشاشة ومركزها المفتوح (Edge-Based Layout) لعرض المعالم وصور الشخصيات دون أي عناصر تعيق الرؤية، بالإضافة لدوك ذكي يتعلم من عادات مشاهدتك ويعيد ترتيب تطبيقاتك تلقائياً.
 
-### ③ Paste this
+---
 
-> Set up my TV with https://github.com/tshi-dev/UrTV: clone it and follow `docs/SETUP-PROMPT.md` step by step. You are on a computer on the same Wi-Fi as the TV.
+## 🎨 المظاهر الوطنية والملكية (Themes & Lighting Engine)
 
-#### What happens after pasting?
-It asks your **city** and your **clubs**, the TV asks **Allow** once, then leave it: 40 minutes, a few restarts.
+يحتوي تلفازك على محرك بصري متقدم يدعم التبديل اللحظي (عبر الزر العائم أو زر الريموت `T`) أو التبديل التلقائي مع ساعات اليوم:
 
-#### Can I put it back as it was?
-Yes, anytime: our apps are removed, what we turned off comes back on, the TV's own screen returns.
-<sub>`optimize/reset.sh`</sub>
+1. **🇶🇦 مظهر الأدعم الوطني (Qatar Al-Adaam):**  
+   مستوحى من ألوان العلم القطري بدرجات العنابي الفاخر (`#580F23`) والأبيض الصافي، مع زخارف مستوحاة من الهوية الوطنية.
+2. **👑 المظهر الملكي (Royal Amiri Gold):**  
+   أناقة ملكية بلمسات الذهب الأميري (`#C5A059`) والأسود الملكي الداكن، مصمم خصيصاً للمجالس والقصور مع إضاءة خافتة ليلاً.
+3. **🌙 مظهر نور الروحاني (Noor Spiritual):**  
+   أخضر زمردي هادئ يتكامل مع عرض حديث أو آية اليوم بخط الثلث وزخارف الأقواس القرآنية `﴿ ﴾` والصلاة على النبي `ﷺ`.
+4. **☀️ محرك الإضاءة الزمني (24h Lighting Cycle):**  
+   يتفاعل لون الواجهة والإضاءة ديناميكياً مع شروق الشمس، الغروب الدافئ، وساعات الليل الهادئة.
 
-#### A new version came out?
-Update both apps; all your settings stay. The screen itself updates on its own. The settings row tells you when one exists.
-<sub>`optimize/install.sh all`</sub>
+---
 
-#### The TV updated its system and locked our app out?
-Redo the whole setup with one command, settings kept.
-<sub>`optimize/run.sh again`</sub>
+## ⚡ أبرز المميزات والإضافات الجديدة
 
-**Safe:** nothing is uninstalled; AirPlay, Chromecast and voice are never touched; a 5-minute safety switch puts the
-stock home back if ours doesn't come up. The apps are built and signed by GitHub Actions from this repo (version
-3.N = the build number). The full prompt: [docs/SETUP-PROMPT.md](docs/SETUP-PROMPT.md). To build a different
-screen: [docs/RECREATE-PROMPT.md](docs/RECREATE-PROMPT.md).
+- 🖼️ **تصميم الأطراف المفتوح (Edge-Based Layout):**  
+  تم نقل كافة العناصر (الساعة، التاريخ الهجري والميلادي، الطقس، ومواقيت الصلاة) إلى الزوايا العلوية، مما يترك منتصف الشاشة نقياً بنسبة 100% لإبراز الخلفيات واللوحات الفنية.
+- 📱 **دوك التطبيقات الذكي (Smart 4-App Dock):**  
+  شريط سفلي مدمج بـ 4 تطبيقات أساسية (تطبيقات الجزيرة الإخبارية والوثائقية، TOD، beIN Sports، وشاهد) مع خوارزمية ذكية تحسب معدل الاستخدام وتعيد ترتيب التطبيقات الأكثر تشغيلاً للأمام تلقائياً.
+- ⚽ **عداد مباريات القمة التنازلي (Big Match Countdown):**  
+  عداد تنازلي مباشر وحي لأقوى مواجهات القمة القطرية والعالمية (مثل السد ✕ الدحيل)، مع عرض النتائج والتوقيت الدقيق.
+- 🕌 **التقويم ومواقيت الصلاة وعداد رمضان:**  
+  عرض التقويم الهجري والميلادي بدقة وأوقات الأذان والإقامة حسب توقيت الدوحة أو مدينتك المختارة.
+- 🪄 **مثبت ويندوز بنقرة واحدة (`setup.ps1`):**  
+  سكريبت PowerShell ذكي يكتشف التلفزيون أو جهاز Chromecast المتصل بنفس الشبكة اللاسلكية تلقائياً ويثبت النظام في ثوانٍ.
 
-## What you get
+---
 
-| | | |
-|---|---|---|
-| **شاشة تلفزيونك** · screensaver | Clock, Hijri date, prayer times and iqama, Ramadan, your teams' matches, weather, markets, and beside the clock your choice of new episodes, today's prayers, the 5-day forecast, all your teams' games, or a verse/hadith of the day, over Saudi landscapes | `urtv-screensaver.apk` |
-| **تلفزيونك** · home screen | Clean Arabic launcher: favourites row (5–10 apps) arranged in «ترتيب المفضلة», all apps, inputs, Wi-Fi, settings; optional card from the screensaver (off by default) | `urtv-home.apk` |
-| **Two free apps** | [TV Bro](https://github.com/truefedex/tv-bro), a web browser for the TV, and [SmartTube](https://github.com/yuliskov/SmartTube), YouTube without ads, from their own releases (skip with `SKIP_EXTRAS=1`) | `optimize/install.sh extras` |
-| **Speed-up** | Telemetry, ads and demos off (reversibly), closed apps frozen, Play Store kept from running in the background, faster animations | `optimize/` |
+## 📸 معرض لقطات الشاشة (Screenshots Showcase)
 
-**Download the apps yourself:** [releases/apk-latest](https://github.com/tshi-dev/UrTV/releases/tag/apk-latest)
-(install with `adb install`; the agent route above also sets everything up).
-Every build is also kept as a numbered release (`v3.N`, the apps' version), to go back to one:
-`APK_TAG=v3.N optimize/install.sh all`.
+<div align="center">
 
-## For agents and scripts
+| 🇶🇦 مظهر الأدعم الوطني | 👑 المظهر الملكي الفاخر |
+| :---: | :---: |
+| <img src=".github/screens/screen-qatar-adaam.jpg" alt="مظهر الأدعم القطري" width="100%" onerror="this.src='.github/brand/banner.png';"> | <img src=".github/screens/screen-royal-amiri.jpg" alt="المظهر الملكي الأميري" width="100%" onerror="this.src='.github/brand/banner.png';"> |
+| **🌙 مظهر نور الروحاني** | **📱 الدوك الذكي وعداد القمة** |
+| <img src=".github/screens/screen-noor-hadith.jpg" alt="مظهر نور وآية اليوم" width="100%" onerror="this.src='.github/brand/banner.png';"> | <img src=".github/screens/screen-dock-apps.jpg" alt="دوك التطبيقات ومباريات القمة" width="100%" onerror="this.src='.github/brand/banner.png';"> |
 
-Everything is scriptable over ADB, made for slow Wi-Fi (retries, resumable uploads, every step remembered):
+> 💡 *ملاحظة: يمكنك إضافة لقطات الشاشة الخاصة بجهازك مباشرة داخل مجلد `.github/screens/` لتظهر تلقائياً في هذا المعرض.*
 
-| | |
-|---|---|
-| `optimize/find-tv.sh` | `--check`: can this terminal reach the home network at all (not from a cloud or sandbox) · then finds the TV (Windows, Mac, Linux) |
-| `optimize/run.sh` | the whole setup; run again after any failure to continue · `status` · `again` after a TV system update (redo all, settings kept) |
-| `optimize/saver.sh` | screensaver settings: `show`, `cities`, `city`, `find-team`, `teams`, `card`, `home-card`, `genres`, `langs`, `minrating`, `photos`, `idle`, `update` |
-| `optimize/dock.sh` | favourites row: `show`, `apps`, `set`, `reset`; `hidden`, `hide PKG`, `show PKG` for apps left off the home screen |
-| `optimize/measure.sh` · `shot.sh` | memory before/after (restart + settle) · screenshots without navigating |
-| `optimize/keep.sh` | turn back on anything protected (AirPlay, casting, voice, updates…) that something turned off |
-| `docs/TVS.md` | what was seen on each TV model (ADB port, home switch, what to watch out for) |
-| `optimize/reset.sh` | back to stock: lists re-enabled, stock home and screensaver back, our apps removed |
-| `optimize/share.sh` | if the owner wants: how the setup went (TV model, time per step, what failed, memory before/after; nothing personal), sent anonymously to the author (from their phone by a QR code if this computer is offline) |
+</div>
 
-What we learned on real TCL sets, and what must stay on: [docs/OPTIMIZE.md](docs/OPTIMIZE.md). Manual test plan:
-[docs/TEST-PLAN.md](docs/TEST-PLAN.md).
+---
 
-## For developers
+## 🚀 التثبيت السريع (Quick Setup)
 
-```
-src/template.html     the screen (HTML/CSS/JS, no framework); edit this, then run src/build.py
-src/build.py          builds the two pages in dist/
-dist/urtv.html        stand-alone page, fonts and photos inlined: open in any browser (F = full screen), works offline
-dist/tv.html          light page the Android app loads (0.3 MB); the app serves fonts and photos from disk
-android/app           the screensaver app (sa.urtv.screensaver): DreamService, settings, auto-update
-android/launcher      the home screen (sa.urtv.home)
-assets/               fonts, bundled photos, Arabic team names, verse and hadith texts
-photos/               the hosted photo set (5 shown per 4 days, rotating every 30 min)
-optimize/             TV tools (Python ADB client, no adb binary needed); lists/ says what may be turned off
-docs/                 the agent prompts (setup, recreate), what we learned on real TVs, test plan, photo credits
-.github/              CI: APK builds, checks, data tools (verses, hadith, clubs, photos), README images
-tests/run.sh          every check: build, data, fonts, scripts, private data, flaky-ADB upload, the screen in a browser
+### الطريقة الأولى: عبر مثبت ويندوز التلقائي (الأسهل بنقرة واحدة)
+1. فعّل **تصحيح أخطاء USB** (USB Debugging) على التلفاز أو جهاز Chromecast من خيارات المطور.
+2. شغّل ملف [`setup.ps1`](setup.ps1) بنقرة واحدة:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\setup.ps1
+   ```
+3. سيتعرف السكريبت تلقائياً على عنوان IP لجهاز التلفزيون المتصل معك على نفس شبكة الـ Wi-Fi ويثبت التطبيقات.
+
+### الطريقة الثانية: التثبيت اليدوي عبر ADB
+```bash
+# الاتصال بالتلفاز (استبدل IP التلفاز بجهازك)
+adb connect 192.168.1.50:5555
+
+# تثبيت شاشة التوقف والتطبيق الرئيسي
+adb install -r dist/urtv-screensaver.apk
+adb install -r dist/urtv-home.apk
 ```
 
-A push to `master` builds both APKs in GitHub Actions and publishes them to `apk-latest` and a numbered `v3.N`
-release; a push to `next` publishes `apk-next` instead (a test build). `tests/run.sh` runs on `master`, `next`,
-`content` and pull requests. Local Android build (needs the SDK): `python3 src/build.py && gradle -p android assembleRelease`
-(signed with the debug key; the release key lives only in the repository's secrets).
+---
 
-**Screen settings** come from the URL fragment (works on `file://` and in WebView):
+## 📺 دعم Google Chromecast
+
+تلفازك متوافق 100% مع أجهزة **Chromecast with Google TV** (نسختي HD و 4K وجهاز Google TV Streamer):
+- **كشاشة توقف ذكية (Ambient Mode):** من إعدادات جوجل تي في ← النظام ← شاشة التوقف ← اختر «تلفازك».
+- **كتطبيق تفاعلي:** يعمل مع ريموت جوجل تي في بزر التبديل السريع للمظاهر.
+- **كلانشر رئيسي:** يمكن تعيينه كواجهة دائمة بديلة لواجهة جوجل الإعلانية.
+
+</div>
+
+---
+
+## 🌐 English Technical Documentation
+
+### Overview
+**TilfazTV** is a premier Arabic home screen and ambient screensaver engineered for Android TV and Chromecast with Google TV devices. It features Qatari national iconography, Royal Amiri Gold styling, and spiritual Noor modes, combined with a 4-app customizable dock with usage learning.
+
+### Architecture & Components
 
 ```
-urtv.html#city=جدة&lat=21.5433&lon=39.1728&tz=Asia/Riyadh&teams=136013,136137&panel=prayers
+TilfazTV/
+├── src/template.html       # Single-file HTML/CSS/JS frontend dashboard
+├── src/build.py            # Bundler & asset compiler (builds dist/urtv.html and dist/tv.html)
+├── dist/                   # Compiled artifacts and web bundles
+├── android/
+│   ├── app/                # Screensaver APK (sa.urtv.screensaver) with DreamService
+│   └── launcher/           # Leanback Home Launcher (sa.urtv.home) with 4-app smart dock
+├── assets/                 # Thmanyah fonts, Qatar national background art, club data
+├── setup.ps1               # Automated 1-click Windows installer with Wi-Fi network scanner
+└── AUTHORS.md              # Project author, maintainer, and upstream licenses
 ```
 
-`teams`: up to 10 TheSportsDB ids in priority order. `panel`: the card beside the clock: `shows`, `prayers`,
-`forecast`, `matches`, `verse` or `none`. Also `genres`, `langs`, `shows`, `minrating` for the episodes card.
+### Controls & Navigation
+- **Remote / Keyboard `T`:** Instantly cycles between Qatar Al-Adaam, Royal Amiri, and Noor themes.
+- **D-Pad & OK:** Navigates the 4-app dock (Al Jazeera, TOD, beIN Sports, Shahid) and launches native APKs.
+- **App Usage Tracking:** Records app launches in SharedPreferences to automatically bring your most frequently used apps forward.
 
-**Data** (free, no keys): Aladhan (prayer times, Umm al-Qura), Open-Meteo (weather), Yahoo and CoinGecko (markets),
-TVMaze (episodes), TheSportsDB (matches). Everything fails soft: offline, the clock, dates, prayer and Ramadan
-countdowns still work and the last good data stays on screen. A finished game's score stays up for a day.
+---
 
-**Verse and hadith texts are never typed by hand:** verses come from the Quran API via CI
-(`.github/tools/fetch_verses.py`); each hadith is checked by CI (`.github/tools/verify_hadith.py`) against the
-Arabic text of the six Sunni books, and only those found are shown, with the books as the source line.
+## 👨‍💻 Project Maintainer & Signature
 
-**The Android apps** update the screen page from this repo every 6 hours (so it must stay public), start fast
-(the page shows once the clock, saved panels and photo are ready), and come back after a power cut.
+- **Lead Developer & Maintainer:** **Medo B** ([@ahmedail05](https://github.com/ahmedail05))
+  - Repository: [https://github.com/ahmedadil05/-TilfazTV](https://github.com/ahmedadil05/-TilfazTV)
+  - Rebranding to **تلفازك · TilfazTV**
+  - Edge Layout optimization for royal portraits and landscape wallpapers
+  - Qatar National Theme (Al-Adaam Maroon `#580F23`) & Royal Amiri Gold (`#C5A059`)
+  - Spiritual Noor Theme with Hadith and Ayat bracket calligraphy (`﴿ ﴾`, `ﷺ`)
+  - Big Match live countdown engine (e.g. Al Sadd ✕ Al Duhail)
+  - 4-App smart dock with usage learning & Al Jazeera TV integration
+  - Automated PowerShell setup for Windows (`setup.ps1`)
 
-## Project Attribution & Maintainer
+---
 
-- **Lead Developer & Maintainer**: **Medo B** ([@ahmedail05](https://github.com/ahmedail05))
-  - Rebranding to **تلفازك · TilfazTV**.
-  - Edge Layout optimization for royal portraits & landscape viewing.
-  - Qatar National Theme (Al-Adaam), Royal Amiri Theme, and Noor Spiritual Theme.
-  - Big Match Live Countdown & Day/Night 24h lighting transitions.
-  - Smart 4-App Dock with launch-tracking auto-arrange.
-  - One-click Windows PowerShell automated setup (`setup.ps1`).
+## 📜 Credits & Upstream Attribution
 
-## Credits & Upstream Attribution
-
-- Photos: Amiri Diwan, State of Qatar, and Unsplash photographers listed in [docs/PHOTO-CREDITS.md](docs/PHOTO-CREDITS.md).
-- Fonts: Thmanyah, and Noto Naskh Arabic for ﷺ ﴿﴾ (OFL, `assets/fonts/`).
-- Based on original concept by [tshi-dev/UrTV](https://github.com/tshi-dev/UrTV).
-- Home screen launcher adapted from [mihirgupta0900/tv-home](https://github.com/mihirgupta0900/tv-home) (MIT, `android/launcher/LICENSE-tv-home`).
-- Package ratings from [UAD-ng](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation).
+- Upstream project foundation: [tshi-dev/UrTV](https://github.com/tshi-dev/UrTV) (MIT License).
+- Home launcher framework adapted from [mihirgupta0900/tv-home](https://github.com/mihirgupta0900/tv-home) (MIT License).
+- Arabic typography: Thmanyah (ثمانية) and Noto Naskh Arabic (OFL, Google Fonts).
+- Packages and debloat research: [Universal Android Debloater](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation).
+- Photographic assets: State of Qatar, Amiri Diwan archives, and Unsplash contributors.
