@@ -1,7 +1,7 @@
 # المؤلفون والمطورون · Authors & Maintainers
 
 ## المطور والمشرف الرئيسي · Lead Developer & Maintainer
-- **Medo B** — [@ahmedail05](https://github.com/ahmedail05)
+- **Medo B** — [@ahmedadil05](https://github.com/ahmedadil05)
   - **المشروع**: تلفازك · TilfazTV
   - **الإضافات والتطوير**:
     - إعادة هيكلة الواجهة بنظام الحواف (Edge Layout) لإبراز الصور والخلفيات الملكية دون حجب.

@@ -2,14 +2,14 @@
 
   <h1>تلفازك · TilfazTV 🇶🇦</h1>
   <p><b>الواجهة القطرية الذكية وشاشة التوقف الفاخرة لأجهزة Android TV و Google TV</b></p>
-  <p>المشروع والمطور الرئيسي: <b><a href="https://github.com/ahmedail05">Medo B (@ahmedail05)</a></b></p>
+  <p>المشروع والمطور الرئيسي: <b><a href="https://github.com/ahmedadil05">Medo B (@ahmedadil05)</a></b></p>
 
   <p>
     <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/TilfazTV-Qatar_Edition-580F23?style=for-the-badge&logo=android&logoColor=white" alt="Qatar Edition" /></a>
     <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/Theme-Al--Adaam_%26_Royal-C5A059?style=for-the-badge" alt="Al-Adaam & Royal Theme" /></a>
     <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/Platform-Android_TV_%7C_Google_TV-000000?style=for-the-badge&logo=google" alt="Google TV & Android TV" /></a>
     <a href="https://github.com/ahmedadil05/-TilfazTV"><img src="https://img.shields.io/badge/License-MIT_%26_Apache-2ea44f?style=for-the-badge" alt="License" /></a>
-    <a href="https://github.com/ahmedail05"><img src="https://img.shields.io/badge/Maintained_by-Medo_B-8A1538?style=for-the-badge&logo=github" alt="Maintainer" /></a>
+    <a href="https://github.com/ahmedadil05"><img src="https://img.shields.io/badge/Maintained_by-Medo_B-8A1538?style=for-the-badge&logo=github" alt="Maintainer" /></a>
   </p>
 
 </div>
@@ -115,7 +115,7 @@ adb install -r dist/urtv-home.apk
 ```
 TilfazTV/
 ├── src/template.html       # Single-file HTML/CSS/JS frontend dashboard
-├── src/build.py            # Bundler & asset compiler (builds dist/urtv.html and dist/tv.html)
+├── src/build.py            # Bundler & asset compiler (builds dist/tilfaztv.html, dist/urtv.html and dist/tv.html)
 ├── dist/                   # Compiled artifacts and web bundles
 ├── android/
 │   ├── app/                # Screensaver APK (sa.urtv.screensaver) with DreamService
@@ -134,7 +134,7 @@ TilfazTV/
 
 ## 👨‍💻 Project Maintainer & Signature
 
-- **Lead Developer & Maintainer:** **Medo B** ([@ahmedail05](https://github.com/ahmedail05))
+- **Lead Developer & Maintainer:** **Medo B** ([@ahmedadil05](https://github.com/ahmedadil05))
   - Repository: [https://github.com/ahmedadil05/-TilfazTV](https://github.com/ahmedadil05/-TilfazTV)
   - Rebranding to **تلفازك · TilfazTV**
   - Edge Layout optimization for royal portraits and landscape wallpapers

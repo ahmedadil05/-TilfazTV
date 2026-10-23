@@ -24,7 +24,7 @@ const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: p
 async function open(file, hash, { width = 1920, height = 1080, seed = true } = {}) {
   const ctx = await browser.newContext({ viewport: { width, height } });
   await ctx.route(/^https?:/, r => {
-    const u = r.request().url(), i = u.indexOf('/master/'), rel = i > 0 ? u.slice(i + 8) : '';
+    const u = r.request().url(), m = u.match(/\/(?:main|master)\/(.+)$/), rel = m ? m[1] : '';
     if (/^(assets\/(backgrounds|fonts)|photos)\//.test(rel))
       return r.fulfill({ path: path.join(ROOT, rel), headers: { 'Access-Control-Allow-Origin': '*' } });
     return r.abort();

@@ -28,8 +28,8 @@ done
 if ! err=$(venv/bin/python -c "import adb_shell.adb_device, adb_shell.auth.keygen, adb_shell.auth.sign_pythonrsa" 2>&1); then
   echo "$err" | tail -1
   if grep -qi "too long" <<< "$err"; then
-    echo "!! This folder's path is too long for Windows (over 260 characters inside optimize/venv). Clone UrTV into"
-    echo "   a short folder, such as C:\UrTV: git clone -c core.longpaths=true https://github.com/tshi-dev/UrTV C:/UrTV"
+    echo "!! This folder's path is too long for Windows (over 260 characters inside optimize/venv). Clone TilfazTV into"
+    echo "   a short folder, such as C:\TilfazTV: git clone -c core.longpaths=true https://github.com/ahmedadil05/-TilfazTV C:/TilfazTV"
   else
     echo "!! The ADB package doesn't load from optimize/venv. Delete the folder optimize/venv, then run"
     echo "   optimize/setup.sh again."

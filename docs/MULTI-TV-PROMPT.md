@@ -6,16 +6,16 @@ Paste everything below the line into an agent that can read GitHub, browse the w
 
 ## Your task
 
-You are extending **شاشة تلفزيونك**, an Arabic always-on TV screensaver/dashboard, so it runs on as many TV platforms as possible, choosing the best delivery method for each. Research first, then build, then document.
+You are extending **تلفازك · TilfazTV**, an Arabic always-on TV screensaver/dashboard, so it runs on as many TV platforms as possible, choosing the best delivery method for each. Research first, then build, then document.
 
-Repository: **https://github.com/tshi-dev/UrTV** (public). Work on a branch and open a pull request against `next`; do not push to `master` directly (changes reach `master` from `next` once tested).
+Repository: **https://github.com/ahmedadil05/-TilfazTV** (public). Work on a branch and open a pull request against `next`; do not push to `main` directly (changes reach `main` from `next` once tested).
 
 ## What already exists (read these first)
 
 - `README.md` — overview, build, URL fragment parameters.
 - `src/template.html` — the whole screen: one HTML/CSS/JS page, no framework, no build step. `src/build.py` makes `dist/urtv.html` (fonts and photos inlined, ~2.9 MB, works from `file://` and offline) and `dist/tv.html` (0.3 MB, for the Android app).
 - `docs/RECREATE-PROMPT.md` — the full design and behaviour spec. Treat it as the source of truth for what the screen must show.
-- `android/` — the current native Android app: a `DreamService` (system screensaver), a settings screen (city, up to 10 teams, the card beside the clock, show filters), and auto-update that downloads `dist/tv.html` from `master` every 6 hours. Built by `.github/workflows/android.yml` and published to the `apk-latest` release.
+- `android/` — the current native Android app: a `DreamService` (system screensaver), a settings screen (city, up to 10 teams, the card beside the clock, show filters), and auto-update that downloads `dist/tv.html` from `main` every 6 hours. Built by `.github/workflows/android.yml` and published to the `apk-latest` release.
 - `docs/TEST-PLAN.md` — how the Android build is tested; reuse its style.
 
 Settings reach the page through the URL fragment, not a query string:

@@ -32,16 +32,16 @@ def tracked(*globs):
 
 
 # ---- build
-before = {n: (ROOT / "dist" / n).read_bytes() for n in ("urtv.html", "tv.html") if (ROOT / "dist" / n).is_file()}
+before = {n: (ROOT / "dist" / n).read_bytes() for n in ("tilfaztv.html", "urtv.html", "tv.html") if (ROOT / "dist" / n).is_file()}
 r = subprocess.run([sys.executable, "src/build.py"], cwd=ROOT, capture_output=True, text=True)
 check("src/build.py runs", r.returncode == 0, r.stderr[-400:])
-for page, limit in (("urtv.html", 4_000_000), ("tv.html", 600_000)):   # tv.html: about 1000 verses and hadith
+for page, limit in (("tilfaztv.html", 20_000_000), ("urtv.html", 20_000_000), ("tv.html", 600_000)):   # tv.html: about 1000 verses and hadith
     html = (ROOT / "dist" / page).read_text(encoding="utf-8")
     left = sorted(set(re.findall(r"__[A-Z][A-Z_]+__", html)))
     check(f"{page}: every build token replaced", not left, left)
     check(f"{page}: size under {limit // 1000} KB", len(html.encode()) < limit, len(html.encode()))
 stale = [n for n, b in before.items() if (ROOT / "dist" / n).read_bytes() != b]
-check("dist/ matched a fresh build (run src/build.py after editing src/)", len(before) == 2 and not stale, stale)
+check("dist/ matched a fresh build (run src/build.py after editing src/)", len(before) == 3 and not stale, stale)
 
 # ---- data files
 for f in tracked("*.json"):

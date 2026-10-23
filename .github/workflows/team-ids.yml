@@ -18,7 +18,7 @@ on:
   schedule:
     - cron: '17 3 1 * *'
   push:
-    branches: [master, next]
+    branches: [main, master, next]
     paths:
       - '.github/tools/team_ids.py'
       - '.github/tools/saudi-clubs-ar.json'

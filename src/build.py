@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# تلفازك · TilfazTV — Maintained by Medo B (https://github.com/ahmedail05)
+# تلفازك · TilfazTV — Maintained by Medo B (https://github.com/ahmedadil05)
 """src/template.html -> two pages in dist/:
 
 urtv.html           stand-alone: fonts and the bundled photos inlined, works offline from a double-click.
@@ -230,7 +230,7 @@ def main():
 
     bg_dir = ROOT / "assets/backgrounds"
     bgs = json.loads((bg_dir / "backgrounds.json").read_text(encoding="utf-8"))
-    for name, inline in (("urtv.html", True), ("tv.html", False)):
+    for name, inline in (("tilfaztv.html", True), ("urtv.html", True), ("tv.html", False)):
         page = html
         for token, font in FONTS.items():
             page = page.replace(token, data_uri(ROOT / "assets/fonts" / font, "font/woff2") if inline

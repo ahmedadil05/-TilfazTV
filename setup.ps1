@@ -1,6 +1,6 @@
 # ==============================================================================
 # تلفازك · TilfazTV - مثبت ويندوز التلقائي (One-Click Setup for Windows)
-# Developed & Maintained by Medo B (https://github.com/ahmedail05)
+# Developed & Maintained by Medo B (https://github.com/ahmedadil05)
 # ==============================================================================
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -26,7 +26,7 @@ Clear-Host
 Write-Host @"
 ==================================================================
            تلفازك · TilfazTV (إصدار قطر والمظهر الملكي ونور)
-           المطور: Medo B (@ahmedail05)
+           المطور: Medo B (@ahmedadil05)
 ==================================================================
 "@ -ForegroundColor Magenta
 
@@ -113,7 +113,7 @@ if ($tvIP) {
         # تثبيت التطبيقات إذا وجدت ملفات APK في dist
         $apks = Get-ChildItem -Path "dist", "optimize" -Filter "*.apk" -Recurse -ErrorAction SilentlyContinue
         if ($apks) {
-            Write-Step 6 "تثبيت تطبيقات UrTV على التلفزيون..."
+            Write-Step 6 "تثبيت تطبيقات تلفازك · TilfazTV على التلفزيون..."
             foreach ($apk in $apks) {
                 Write-Host "تثبيت $($apk.Name)..." -ForegroundColor Gray
                 adb install -r $apk.FullName
