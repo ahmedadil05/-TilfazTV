@@ -74,7 +74,7 @@ public class SettingsActivity extends Activity {
     private void render() {
         list.removeAllViews();
         TextView title = new TextView(this);
-        title.setText("تلفزيونك");
+        title.setText("تلفازك · TilfazTV");
         title.setTextColor(0xFFF6EFE0);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         title.setTypeface(font("ThmanyahDisplay-Bold"));
@@ -103,7 +103,7 @@ public class SettingsActivity extends Activity {
         header("بجانب الساعة");
         row("المحتوى", Prefs.panelLabel(prefs.panel()), R.drawable.ic_eye, new Runnable() { public void run() { pickPanel(false); } });
 
-        header("الشاشة الرئيسية (تلفزيونك)");
+        header("الشاشة الرئيسية (تلفازك)");
         row("بطاقة على الشاشة الرئيسية", Prefs.panelLabel(prefs.homePanel()), R.drawable.ic_eye,
             new Runnable() { public void run() { pickPanel(true); } });
         row("ترتيب التطبيقات المفضلة", "قائمة ترتّب فيها المفضلة بالأسهم", R.drawable.ic_star,
@@ -366,7 +366,7 @@ public class SettingsActivity extends Activity {
         try {
             startActivity(new Intent().setClassName("sa.urtv.home", "sa.urtv.home.DockActivity"));
         } catch (RuntimeException e) {
-            toast("ثبّت الواجهة الرئيسية «تلفزيونك» أولاً");
+            toast("ثبّت الواجهة الرئيسية «تلفازك» أولاً");
         }
     }
 

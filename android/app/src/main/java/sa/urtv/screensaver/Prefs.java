@@ -12,17 +12,18 @@ import java.util.List;
 
 /** Everything the user picks in settings, and the dashboard URL built from it. */
 final class Prefs {
-    static final String TZ = "Asia/Riyadh";
+    static final String TZ = "Asia/Qatar";
 
     // TheSportsDB id, Arabic name; more teams come from the in-app search
     static final String[][] TEAM_PRESETS = {
-        {"136013", "الهلال"}, {"136137", "المنتخب السعودي"},
+        {"136013", "السد"}, {"136137", "الريان"},
     };
 
     // League name exactly as TheSportsDB spells it (checked from CI by .github/tools/team_ids.py), Arabic label.
     // Their clubs come from assets/shared/teams.json (Teams), which CI builds from these leagues' matches
     // (.github/tools/team_ids.py reads this list); a new league here needs its minimum club count there.
     static final String[][] LEAGUES = {
+        {"Qatar Stars League", "دوري نجوم قطر (QSL)"},
         {"Saudi-Arabian Pro League", "دوري روشن السعودي"},
         {"Saudi First Division League", "دوري يلو (الدرجة الأولى)"},
         {"English Premier League", "الدوري الإنجليزي"},
@@ -79,7 +80,7 @@ final class Prefs {
 
     /** {name, latitude, longitude}; Riyadh until the user picks */
     String[] city() {
-        return new String[] {sp.getString("cityName", "الرياض"), sp.getString("cityLat", "24.6877"), sp.getString("cityLon", "46.7219")};
+        return new String[] {sp.getString("cityName", "الدوحة"), sp.getString("cityLat", "25.2854"), sp.getString("cityLon", "51.5310")};
     }
     void setCity(String name, String lat, String lon) {
         sp.edit().putString("cityName", name).putString("cityLat", lat).putString("cityLon", lon).apply();

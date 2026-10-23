@@ -819,7 +819,7 @@ public class MainActivity extends Activity {
         String s = prefs().getString("photoIndex", "");
         if (s.isEmpty()) return new String[0];
         String[] all = s.split(",");
-        java.util.Calendar c = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("Asia/Riyadh"));
+        java.util.Calendar c = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("Asia/Qatar"));
         java.util.Calendar utc = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("UTC"));
         utc.clear();
         utc.set(c.get(java.util.Calendar.YEAR), c.get(java.util.Calendar.MONTH), c.get(java.util.Calendar.DAY_OF_MONTH));

@@ -465,7 +465,7 @@ const CONFIG = {
   longitude: _num('lon', 51.5310),
   timezone: _Q.get('tz') || 'Asia/Qatar',
   theme: initialTheme,
-  prayerMethod: 4,
+  prayerMethod: _num('method', 8),
   // followed teams in priority order: #teams=id,id,... (up to 10); default: Al Sadd (136013), Al Rayyan (136137)
   teamIds: (_Q.has('teams') ? _Q.get('teams').split(',')
             : [_Q.has('team1') ? _Q.get('team1') : '136013', _Q.has('team2') ? _Q.get('team2') : '136137'])
@@ -540,7 +540,13 @@ function tickTheme(){
   document.documentElement.setAttribute('data-time-mode', mode);
 }
 
-function riyadhParts(d = new Date()){
+function dohaParts(d = new Date()){
+  if(_Q.has('test_date') && d instanceof Date){
+    try {
+      const td = new Date(_Q.get('test_date') + 'T12:00:00');
+      if(!isNaN(td.getTime())) d = td;
+    } catch(e) {}
+  }
   const f = new Intl.DateTimeFormat('en-GB',{
     timeZone: CONFIG.timezone, hour12:false,
     year:'numeric', month:'2-digit', day:'2-digit',
@@ -548,6 +554,7 @@ function riyadhParts(d = new Date()){
   }).formatToParts(d).reduce((a,p)=>(a[p.type]=p.value,a),{});
   return { y:+f.year, mo:+f.month, d:+f.day, h:(+f.hour)%24, mi:+f.minute, s:+f.second };
 }
+const riyadhParts = dohaParts;
 function fmt12(h, mi){
   const h12 = h % 12 === 0 ? 12 : h % 12;
   return `${ar(h12)}:${ar(pad(mi))} ${h < 12 ? 'ص' : 'م'}`;
@@ -765,9 +772,32 @@ function tickRamadan(){
         elD=document.getElementById('ramadan-days'),
         elS=document.getElementById('ramadan-sub');
 
+  const dp = dohaParts();
+  const isNationalDayMonth = dp.mo === 12 || _Q.has('national_day');
+  
+  // ---- Qatar National Day (18 December) Mode ----
+  if(isNationalDayMonth && hijriMonthNow() !== 9){
+    if(dp.d < 18 && !_Q.has('national_day_active')){
+      const left = 18 - dp.d;
+      elL.textContent = 'اليوم الوطني القطري 🇶🇦';
+      elD.innerHTML = ar(left) + ' <span class="unit">' + (left === 1 ? 'يوم' : (left === 2 ? 'يومين' : (left <= 10 ? 'أيام' : 'يوم'))) + '</span>';
+      elS.innerHTML = 'المسير والاحتفال في <b>١٨ ديسمبر</b>';
+      return;
+    } else if(dp.d === 18 || _Q.has('national_day_active')){
+      elL.textContent = 'اليوم الوطني لدولة قطر 🇶🇦';
+      elD.innerHTML = '١٨ ديسمبر';
+      elS.innerHTML = '<b>مطوعين الصعايب · كل عام وقطر بخير</b>';
+      // Automatically switch to Qatar Al-Adaam theme
+      if(document.documentElement.getAttribute('data-theme') !== 'qatar' && !localStorage.getItem('userThemeOverride')){
+        setTimeTheme('qatar');
+      }
+      return;
+    }
+  }
+
   // ---- Ramadan mode: iftar / suhoor instead of the countdown ----
   if(hijriMonthNow() === 9 && PRAYERS.length){
-    const rp = riyadhParts();
+    const rp = dohaParts();
     const mins = rp.h*60 + rp.mi + rp.s/60;
     const fajr = PRAYERS.find(p=>p.key==='Fajr');
     const maghrib = PRAYERS.find(p=>p.key==='Maghrib');
@@ -788,7 +818,7 @@ function tickRamadan(){
   const st = ramadanStart();
   elL.textContent = 'رمضان ' + ar(st ? st.hy : hijriYearNow());
   if(!st){ elD.textContent='—'; elS.textContent=''; return; }
-  const rp2 = riyadhParts();
+  const rp2 = dohaParts();
   const days = Math.max(0, Math.round(
     (Date.UTC(st.y, st.mo-1, st.d) - Date.UTC(rp2.y, rp2.mo-1, rp2.d)) / 86400000));
   elD.innerHTML = ar(days) + ' <span class="unit">يوم</span>';
@@ -1420,10 +1450,11 @@ function showBackground(url, b){
 // Every 4 days a new random set of 5 hosted photos (same draw as the launcher: Park-Miller generator seeded
 // by the 4-day period), rotating every CONFIG.photoMinutes (30 unless the owner changed it). Only the photo on screen is downloaded.
 const PHOTO_SET = 5, PHOTO_PERIOD_DAYS = 4;
-function riyadhDayNumber(){
-  const p = riyadhParts();
+function dohaDayNumber(){
+  const p = dohaParts();
   return Math.floor(Date.UTC(p.y, p.mo - 1, p.d) / 86400000);
 }
+const riyadhDayNumber = dohaDayNumber;
 function photoSet(n){
   const period = Math.floor(riyadhDayNumber() / PHOTO_PERIOD_DAYS);
   let seed = (period % 2147483646) + 1;
@@ -1445,6 +1476,11 @@ function applyBackground(force){
     BG_SLOT = slot;
     const set = REMOTE_BGS.length ? photoSet(REMOTE_BGS.length).map(k => REMOTE_BGS[k]) : [];
     const local = BGS[slot % BGS.length];
+    if((dohaParts().mo === 12 && dohaParts().d === 18) || _Q.has('national_day_active')){
+      const natBg = BGS.find(x => x.u && (x.u.includes('20081218') || x.u.includes('qatar3') || (x.c && x.c.includes('National Day')))) || local;
+      showBackground(natBg.u, natBg);
+      return;
+    }
     if(!set.length){ showBackground(local.u, local); return; }
     const b = set[slot % set.length], url = PHOTO_BASE + b.f;
     // First photo: wait briefly for the hosted one (the app serves it from disk at once) so the screen
@@ -1484,7 +1520,7 @@ function boot(){
   if(wxCity) wxCity.textContent = CONFIG.city;
   const cs = document.getElementById('clock-sub');
   if(cs) cs.textContent = 'بتوقيت ' + CONFIG.city;
-  document.title = 'شاشة تلفزيونك';
+  document.title = 'تلفازك · TilfazTV 🇶🇦';
   applyBackground(true);
   loadPhotoIndex().then(() => applyBackground(true));
   setInterval(() => applyBackground(false), 60*1000);
