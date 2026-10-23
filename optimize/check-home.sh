@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Does Home bring back the new home screen from inside an app? Opens an app, presses Home, and says what is in
-# front (and fails if no app could be opened). Prints «OK: Home opens تلفزيونك» or «!! Home opened …».
+# front (and fails if no app could be opened). Prints «OK: Home opens تلفازك · TilfazTV» or «!! Home opened …».
 #   optimize/check-home.sh [package]      (default: YouTube, else the first app of the favourites row)
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -31,7 +31,7 @@ tv "input keyevent KEYCODE_HOME" > /dev/null
 sleep 4
 front=$(front_now)
 if grep -q sa.urtv.home <<< "$front"; then
-  echo "OK: Home opens تلفزيونك"
+  echo "OK: Home opens تلفازك · TilfazTV"
 else
   echo "!! Home opened: ${front:-nothing}"
   exit 1

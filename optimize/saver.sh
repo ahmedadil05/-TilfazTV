@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# شاشة تلفزيونك's settings, for agents: no remote, no menus.
+# تلفازك · TilfazTV's settings, for agents: no remote, no menus.
 #   optimize/saver.sh show                         current settings
 #   optimize/saver.sh cities                       built-in Saudi cities by region
 #   optimize/saver.sh city الرس                    a built-in city (Arabic name as listed)

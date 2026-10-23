@@ -1,4 +1,4 @@
-# Set up a TV with تلفزيونك: the prompt for your AI agent
+# Set up a TV with تلفازك · TilfazTV: the prompt for your AI agent
 
 **On the TV first:** Settings → System → About → press OK on **Build** 7 times → back → Developer options →
 turn on **USB debugging** (and **Network debugging** if it is listed). Keep the TV on.
@@ -17,7 +17,7 @@ Or in the Claude desktop app: the **Code** tab, with a **local** folder on this 
 ---
 
 Set up my Android TV / Google TV with **تلفازك · TilfazTV** from https://github.com/ahmedadil05/-TilfazTV: a faster TV
-(bloat off, safely), an Arabic home screen, and the screensaver «شاشة تلفزيونك». Talk to me in Arabic (or my
+(bloat off, safely), an Arabic home screen, and the screensaver «تلفازك · TilfazTV». Talk to me in Arabic (or my
 language); keep commands in English.
 
 ## Start here: three short messages, word for word, before you touch the TV
@@ -39,7 +39,7 @@ the whole task, and to say «تم».
 **Message 2, the city:**
 
 > وش مدينتك؟
-> (لمواقيت الصلاة والطقس. مثال: الرياض، جدة، الرس)
+> (لمواقيت الصلاة والطقس. مثال: الدوحة، الريان، الوكرة، أو مدينتك)
 
 **Message 3, the clubs and the defaults:**
 
@@ -90,7 +90,7 @@ sees them (that is why every check has its own script).
 **Codex on Windows:** its sandbox can never start Git Bash (`0xC0000022`, `NtCreateDirectoryObject`: a known Codex
 bug, openai/codex#54449). So run every Git Bash command **outside the sandbox**: request escalated permissions for
 it, with this justification: "Git Bash cannot start inside the Codex Windows sandbox (openai/codex#54449); this runs
-the UrTV setup script the user asked for, in this folder, to reach their TV on their Wi-Fi." With «Approve for me»
+the TilfazTV setup script the user asked for, in this folder, to reach their TV on their Wi-Fi." With «Approve for me»
 the reviewer decides; when it offers to allow `bash.exe` from now on, take it. I don't need Full access for this.
 A refusal that never reached a reviewer (`you cannot ask for escalated permissions`, `rejected by policy`,
 `sandbox_approval is false`) means approvals are not on «Approve for me»: Codex then rejects every escalation by
@@ -105,7 +105,7 @@ me exactly what was refused. Don't port the scripts to PowerShell or look for an
 same command again: the scripts find the new Python without a new terminal. Don't stop and hand me the install.
 ```
 git clone https://github.com/ahmedadil05/-TilfazTV     # on Windows into a short folder such as C:/TilfazTV (a deep one breaks Python)
-cd UrTV
+cd -TilfazTV
 git pull                               # always the latest (a command of its own, not joined with the others)
 optimize/find-tv.sh --check            # Windows: always through Git Bash (below), never plain `python`
 ```
@@ -189,7 +189,7 @@ Lines starting with `!!` are the scripts telling you to stop and act. These are 
 | the TV has no home at all (black screen, Home does nothing) | our home app is gone while the stock home is off | `optimize/restore.sh` (no list: only the home screen), then `optimize/install.sh launcher`; more in `docs/OPTIMIZE.md`, «Home screen problems» |
 | `!! The stock home is not on screen` (reset) | the stock home was slow to start | ask me to press Home, then `optimize/reset.sh` again |
 | `!! still off` (keep.sh) | a protected feature would not turn back on | **stop**, show me; don't continue |
-| `left off by the TV itself` (keep.sh) | a protected package was already off before UrTV and the TV won't turn it on (TCL ships Alexa off outside its regions) | nothing to do: go on |
+| `left off by the TV itself` (keep.sh) | a protected package was already off before TilfazTV and the TV won't turn it on (TCL ships Alexa off outside its regions) | nothing to do: go on |
 | the TV's own screensaver screenshot is black | Android hides it from screenshots | expected; ours can be shot |
 | our screensaver shot has no weather or matches yet | data still loading | `optimize/saver.sh update`, wait a minute, shoot again |
 | `find-team` finds nothing | a spelling our list doesn't have, or a club outside the app's leagues | once with the English name; or `optimize/saver.sh find-team --list <league word>` (e.g. `Saudi`, `Premier`) and pick it from there |
@@ -303,7 +303,7 @@ optimize/run.sh status                            # every step ✓, and «report
   screensaver delay, and the optional TCL extras (the TCL tab and channels, game bar, T-Cast…).
 - How to undo, again: the folder's full path and the exact command to paste there
   (`optimize/reset.sh`; on Windows in Git Bash), what it brings back, and that if I ever want it, I can open an
-  agent on this computer and say «رجّع التلفزيون مثل ما كان: شغّل optimize/reset.sh في مجلد UrTV».
+  agent on this computer and say «رجّع التلفزيون مثل ما كان: شغّل optimize/reset.sh في مجلد TilfazTV».
 
 ## 8. Ask me to share how it went (the very last thing)
 

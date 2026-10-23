@@ -29,7 +29,7 @@ title() {
     safe)        echo "Disable telemetry, ads and demos (lists/tcl-safe.txt)" ;;
     mine)        echo "Disable the household's optional picks (lists/mine.txt)" ;;
     tweaks)      echo "Speed and memory tweaks" ;;
-    screensaver) echo "Install شاشة تلفزيونك" ;;
+    screensaver) echo "Install تلفازك · TilfazTV" ;;
     launcher)    echo "Install the home screen (safety switch on)" ;;
     extras)      echo "Install TV Bro (web browser) and SmartTube (YouTube without ads)" ;;
     after)       echo "Measure after (restart + 3 min)" ;;

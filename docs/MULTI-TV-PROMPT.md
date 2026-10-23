@@ -1,4 +1,4 @@
-# Prompt: make شاشة تلفزيونك work on any TV
+# Prompt: make تلفازك · TilfazTV work on any TV
 
 Paste everything below the line into an agent that can read GitHub, browse the web and write code.
 

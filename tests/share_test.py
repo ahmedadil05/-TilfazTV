@@ -8,7 +8,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(here, "..", "optimize"))
 import share
 
-ours = next(l.split()[0] for l in open(os.path.join(here, "..", "optimize", "lists", "tcl-safe.txt"))
+ours = next(l.split()[0] for l in open(os.path.join(here, "..", "optimize", "lists", "tcl-safe.txt"), encoding="utf-8")
             if l.strip() and not l.startswith("#"))
 share.RUN = Path(tempfile.mkdtemp())
 (share.RUN / "run.log").write_text("\n".join([

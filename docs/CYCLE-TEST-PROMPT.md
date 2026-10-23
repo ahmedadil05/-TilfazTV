@@ -9,7 +9,7 @@ need you, at the start. Paste this to an agent that runs commands on a computer 
 
 ---
 
-Install UrTV on my TV and reset it, three times, and write a report for the developer. Talk to me in Arabic; keep
+Install TilfazTV on my TV and reset it, three times, and write a report for the developer. Talk to me in Arabic; keep
 commands in English. Everything except the start runs without me.
 
 - Windows: run every command in Git Bash: `"C:\Program Files\Git\bin\bash.exe" -lc "cd <folder> && <command>"`.
@@ -22,12 +22,12 @@ commands in English. Everything except the start runs without me.
 ## Start (with me, 5 minutes)
 
 1. Get the `next` branch: `git clone -b next https://github.com/ahmedadil05/-TilfazTV` (on Windows into a short folder such
-   as `C:/UrTV`), or in an existing folder `git fetch origin`, `git checkout next`, `git pull`.
+   as `C:/TilfazTV`), or in an existing folder `git fetch origin`, `git checkout next`, `git pull`.
 2. `optimize/setup.sh` (must end with «✓ Python ADB client»), `optimize/find-tv.sh --check`, `optimize/find-tv.sh`.
 3. Tell me to watch the TV and press Allow (tick «Always allow»), then without waiting for my reply:
    `optimize/venv/bin/python -I optimize/tv.py --probe`
 4. `optimize/shot.sh home my-apps`: write down the first 6 apps of my favourites row, left to right.
-5. If this TV has UrTV on it already: `optimize/reset.sh`, so cycle 1 starts like new.
+5. If this TV has TilfazTV on it already: `optimize/reset.sh`, so cycle 1 starts like new.
 6. Tell me I can leave, and that the TV will restart several times over the next hour or two.
 
 ## Each cycle (3 times)
@@ -46,7 +46,7 @@ Note the clock time at the start and end of each numbered step.
    - `optimize/dock.sh apps`, then `optimize/dock.sh set <the 6 packages>` in my order
    - `optimize/saver.sh update`
 3. Check:
-   - `optimize/check-home.sh` (must say «OK: Home opens تلفزيونك»)
+   - `optimize/check-home.sh` (must say «OK: Home opens تلفازك · TilfazTV»)
    - `optimize/dock.sh hidden` (copy its output into the report)
    - `optimize/keep.sh` (must end with «Protected features: all on.»)
    - `optimize/run.sh status` (every step ✓, and «report: no !! lines»)

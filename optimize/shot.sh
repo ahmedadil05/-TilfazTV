@@ -6,7 +6,7 @@
 #   optimize/shot.sh screensaver [NAME]   the screensaver (started now, 40 s for its data), then Back; where
 #                                         Android won't start it over ADB, our app's preview of the same page
 #   optimize/shot.sh favourites [NAME]    «ترتيب المفضلة»
-#   optimize/shot.sh settings [NAME]      شاشة تلفزيونك's settings
+#   optimize/shot.sh settings [NAME]      تلفازك · TilfazTV's settings
 #   optimize/shot.sh now NAME             whatever is on screen now
 set -euo pipefail
 cd "$(dirname "$0")/.."

@@ -1,4 +1,4 @@
-# Test UrTV's tools on a TV: the prompt for your AI agent
+# Test TilfazTV's tools on a TV: the prompt for your AI agent
 
 A quick check that the tools work with your TV and computer, for the developer. Nothing on the TV changes: no
 installs, nothing disabled, no settings (only a tiny test file, deleted right after). Paste this to an agent that
@@ -11,7 +11,7 @@ setup uses.
 
 ---
 
-Test UrTV's tools on my TV and write a report for the developer. Don't change anything on the TV: no installs,
+Test TilfazTV's tools on my TV and write a report for the developer. Don't change anything on the TV: no installs,
 nothing disabled, no settings, no reset. Talk to me in Arabic; keep commands in English.
 
 - Windows: run every command in Git Bash: `"C:\Program Files\Git\bin\bash.exe" -lc "cd <folder> && <command>"`.
@@ -20,7 +20,7 @@ nothing disabled, no settings, no reset. Talk to me in Arabic; keep commands in 
   itself). If one fails, note its output and go on to the next. Don't fix anything or write your own scripts.
 
 In the TilfazTV folder, on the `next` branch (`git clone -b next https://github.com/ahmedadil05/-TilfazTV`, on Windows into a
-short folder such as `C:/UrTV`; or in an existing folder `git fetch origin`, `git checkout next`, `git pull`):
+short folder such as `C:/TilfazTV`; or in an existing folder `git fetch origin`, `git checkout next`, `git pull`):
 
 1. `optimize/setup.sh`: must end with «✓ Python ADB client».
 2. `optimize/find-tv.sh --check`, then `optimize/find-tv.sh`.
