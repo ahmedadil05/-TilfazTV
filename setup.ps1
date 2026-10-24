@@ -110,8 +110,18 @@ if ($tvIP) {
     if ($devices -match "$tvIP.*device\b") {
         Write-Success "تم الاتصال بالتلفزيون بنجاح!"
 
-        # تثبيت التطبيقات إذا وجدت ملفات APK في dist
+        # تثبيت التطبيقات إذا وجدت ملفات APK في dist أو تنزيل أحدث نسخة رسمية
         $apks = Get-ChildItem -Path "dist", "optimize" -Filter "*.apk" -Recurse -ErrorAction SilentlyContinue
+        if (-not $apks) {
+            Write-Host "جاري فحص وتنزيل أحدث حزمة APK رسمية موقعة من GitHub..." -ForegroundColor Gray
+            try {
+                $releaseUrl = "https://github.com/ahmedadil05/-TilfazTV/releases/download/apk-latest/urtv-screensaver.apk"
+                Invoke-WebRequest -Uri $releaseUrl -OutFile "dist\urtv-screensaver.apk" -TimeoutSec 30
+                $apks = Get-ChildItem -Path "dist" -Filter "*.apk" -ErrorAction SilentlyContinue
+            } catch {
+                Write-Warn "تعذر التنزيل التلقائي لملف APK (يمكنك تشغيل الواجهة عبر المتصفح أو بناؤها محلياً)."
+            }
+        }
         if ($apks) {
             Write-Step 6 "تثبيت تطبيقات تلفازك · TilfazTV على التلفزيون..."
             foreach ($apk in $apks) {

@@ -209,8 +209,8 @@
     margin-bottom:.3vh;
     text-shadow:0 2px 20px rgba(0,0,0,.6);
   }
-  .hijri{font-size:clamp(17px,1.6vw,30px);font-weight:500;color:var(--sand);line-height:1.3}
-  .greg{margin-top:.4vh;font-size:clamp(12px,1.05vw,20px);font-weight:300;color:var(--dim)}
+  .greg{font-family:'ThmanyahDisplay','Thmanyah',serif;font-size:clamp(18px,1.75vw,33px);font-weight:700;color:var(--sand);line-height:1.25}
+  .hijri{margin-top:.35vh;font-size:clamp(12px,1.05vw,20px);font-weight:400;color:var(--dim);line-height:1.2}
   /* starts at the screen edge, under the first letters, and fades toward the middle */
   .rule{margin-top:1.2vh;width:clamp(100px,9vw,190px);height:1px;margin-left:auto;margin-right:0;
     background:linear-gradient(270deg,var(--gold),rgba(220,184,111,0))}
@@ -377,8 +377,8 @@
   <header class="top">
     <div class="dates">
       <div class="dayname" id="dayname">—</div>
-      <div class="hijri" id="hijri">—</div>
       <div class="greg" id="greg">—</div>
+      <div class="hijri" id="hijri">—</div>
       <div class="rule"></div>
       <div class="theme-pill" id="theme-btn" tabindex="0" title="انقر أو اضغط T لتغيير المظهر">
         <span class="theme-icon">🎨</span>
@@ -396,9 +396,9 @@
         <div class="wxsub"><span id="wx-city">الدوحة</span><span class="wxr" id="wx-range"></span></div>
         <div class="rule l"></div>
         <div class="mk">
-          <span class="m"><span>تاسي</span><span id="tasi-chg" class="delta" hidden></span></span>
-          <span class="m"><span>S&amp;P 500</span><span id="spx-chg" class="delta" hidden></span></span>
-          <span class="m"><span>بيتكوين</span><span id="btc-chg" class="delta" hidden></span></span>
+          <span class="m"><span id="mkt-1-lbl">بورصة قطر</span><span id="mkt-1-chg" class="delta" hidden></span></span>
+          <span class="m"><span id="mkt-2-lbl">الذهب</span><span id="mkt-2-chg" class="delta" hidden></span></span>
+          <span class="m"><span id="mkt-3-lbl">النفط</span><span id="mkt-3-chg" class="delta" hidden></span></span>
         </div>
       </div>
     </div>
@@ -439,17 +439,14 @@
 <script>
 // daily background: one photo per Riyadh day, deterministic
 const BGS = [
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH_T.jpg", c:"Amiri Diwan · Doha", d:0.95},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH The Father Amir-D-main.jpg", c:"Amiri Diwan · Doha", d:0.92},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/Heir Apparent.png", c:"Amiri Diwan · Doha", d:0.94},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/diwan-history1.png", c:"Amiri Diwan · History", d:0.9},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/qatar3.png", c:"State of Qatar", d:0.92},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/qatar_terracotta_20261023_212009.png", c:"State of Qatar · Terracotta", d:0.91},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/20081218_86T9091.jpg", c:"Qatar National Day", d:0.9},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH-card size.jpg", c:"Amiri Diwan · Portrait", d:0.95},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/LAj90eAXOZA.jpg", c:"NEOM · Unsplash", d:0.96},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/t3dlLOhdEzs.jpg", c:"NEOM · Unsplash", d:0.99},
-  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/XDtzu1D2P8c.jpg", c:"NEOM · Unsplash", d:0.84}
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH_T.jpg", c:"الديوان الأميري · الدوحة", d:0.95},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH The Father Amir-D-main.jpg", c:"الديوان الأميري · الدوحة", d:0.92},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/Heir Apparent.png", c:"الديوان الأميري · الدوحة", d:0.94},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/diwan-history1.png", c:"الديوان الأميري · معالم تاريخية", d:0.9},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/qatar3.png", c:"دولة قطر · كورنيش الدوحة", d:0.92},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/qatar_terracotta_20261023_212009.png", c:"دولة قطر · التراث المعماري", d:0.91},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/20081218_86T9091.jpg", c:"اليوم الوطني لدولة قطر", d:0.9},
+  {u:"https://raw.githubusercontent.com/ahmedadil05/-TilfazTV/main/assets/backgrounds/HH-card size.jpg", c:"الديوان الأميري · الدوحة", d:0.95}
 ];
 // the app passes the chosen city in the URL fragment: #city=..&lat=..&lon=..&tz=..
 const _Q = new URLSearchParams((location.hash || '').replace(/^#/, ''));
@@ -476,16 +473,17 @@ const CONFIG = {
   timezone: _Q.get('tz') || 'Asia/Qatar',
   theme: initialTheme,
   prayerMethod: _num('method', 8),
-  // followed teams in priority order: #teams=id,id,... (up to 10); default: Al Sadd (136013), Al Rayyan (136137)
+  // followed teams: Qatar Stars League + Big Teams
   teamIds: (_Q.has('teams') ? _Q.get('teams').split(',')
-            : [_Q.has('team1') ? _Q.get('team1') : '136013', _Q.has('team2') ? _Q.get('team2') : '136137'])
+            : [_Q.has('team1') ? _Q.get('team1') : '137648', _Q.has('team2') ? _Q.get('team2') : '138050', '137679', '135946', '138029', '137994', '137995', '133738', '133613', '133739'])
     .map(x=>(x||'').trim()).filter(x=>/^\d+$/.test(x)).slice(0, 10),
   sportsKey: '123',
+  showMatch: _Q.get('match') !== '0' && _Q.get('match') !== 'none',
   // the card beside the clock: shows | prayers | forecast | matches | verse | ayah | hadith | none
   panel: (p => ['shows','prayers','forecast','matches','verse','ayah','hadith','none'].includes(p) ? p : (initialTheme === 'noor' ? 'verse' : 'none'))
          (_Q.get('panel') || (initialTheme === 'noor' ? 'verse' : 'none')),
   matchesPerPage: 2,
-  matchPageMs: 15000,
+  matchPageMs: 120000,   // switch every 2 minutes
   // minutes from adhan to iqama (Ministry of Islamic Affairs defaults); Friday Dhuhr has none
   iqama: {Fajr:25, Dhuhr:20, Asr:20, Maghrib:10, Isha:20},
   // "new this week" filters from the app: TVMaze genres, languages, countries, picked show ids
@@ -503,9 +501,9 @@ const CONFIG = {
   widget: _Q.get('widget') === '1',
 };
 
-const GREG = 'ar-SA-u-ca-gregory-nu-arab';
-const AR = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-const ar = s => String(s).replace(/[0-9]/g, d => AR[+d]);
+const GREG = 'ar-QA-u-ca-gregory-nu-latn';
+// English numerals everywhere across the dashboard
+const ar = s => String(s != null ? s : '');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pad = n => String(n).padStart(2,'0');
 
@@ -591,23 +589,23 @@ function tickClock(){
 function tickDates(){
   const now = new Date();
   try{
-    const day = new Intl.DateTimeFormat('ar-SA',{
+    const day = new Intl.DateTimeFormat('ar-QA',{
       timeZone: CONFIG.timezone, weekday:'long'
     }).format(now);
     const dayEl = document.getElementById('dayname');
     if(dayEl) dayEl.textContent = 'يوم ' + day;
   }catch(e){}
   try{
-    let h = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{
+    document.getElementById('greg').textContent = new Intl.DateTimeFormat(GREG,{
+      timeZone: CONFIG.timezone, day:'numeric', month:'long', year:'numeric'
+    }).format(now) + ' م';
+  }catch(e){}
+  try{
+    let h = new Intl.DateTimeFormat('ar-QA-u-ca-islamic-umalqura-nu-latn',{
       timeZone: CONFIG.timezone, day:'numeric', month:'long', year:'numeric'
     }).format(now);
     h = h.replace(/\s*هـ\s*$/,'').replace(/،\s*$/,'');
     document.getElementById('hijri').textContent = h + ' هـ';
-  }catch(e){}
-  try{
-    document.getElementById('greg').textContent = new Intl.DateTimeFormat(GREG,{
-      timeZone: CONFIG.timezone, day:'numeric', month:'long', year:'numeric'
-    }).format(now) + ' م';
   }catch(e){}
 }
 
@@ -1019,53 +1017,94 @@ async function loadLive(){
   renderMatches();
 }
 
-// Prominent countdown timer for the next big match among followed clubs
-function updateBigMatchCountdown(){
+// Prominent match card: Today's match priority, multi-match 2-min rotation, QSL clubs
+let BIG_MATCH_INDEX = 0;
+function updateBigMatchCountdown(advance){
+  const matchPanel = document.querySelector('.p-match');
+  if(!CONFIG.showMatch){
+    if(matchPanel) matchPanel.style.display = 'none';
+    return;
+  } else if(matchPanel){
+    matchPanel.style.display = '';
+  }
+
   const teamEl = document.getElementById('match-team-name');
   const countEl = document.getElementById('match-countdown');
+  const labelEl = document.getElementById('match-label');
   if(!teamEl || !countEl) return;
   
-  let bestEv = null, minDiff = Infinity, now = Date.now();
+  const now = Date.now();
+  const seen = new Set();
+  const events = [];
+  
   for(const id of CONFIG.teamIds){
-    const ev = MATCHES[id];
-    if(!ev || !ev.idEvent) continue;
-    const s = ev.strTimestamp || `${ev.dateEvent}T${ev.strTime || '00:00:00'}`;
-    const diff = new Date(s.endsWith('Z') ? s : s + 'Z').getTime() - now;
-    if(diff > -2.5 * 3600000 && diff < minDiff){
-      minDiff = diff;
-      bestEv = ev;
+    const evList = [...(NEXT_LIST[id] || []), MATCHES[id]].filter(x => x && x.idEvent && !seen.has(x.idEvent) && seen.add(x.idEvent));
+    for(const ev of evList){
+      const d = toDate(ev);
+      const diff = d.getTime() - now;
+      if(diff > -2.5 * 3600000 && diff < CONFIG.weekWindowDays * 86400000){
+        events.push({ev, diff, d});
+      }
     }
   }
   
-  if(!bestEv){
+  if(!events.length){
+    if(labelEl) labelEl.textContent = 'مباريات الأسبوع';
     teamEl.textContent = 'لا توجد مباريات قادمة هذا الأسبوع';
-    countEl.textContent = 'نادي السد والريان';
+    countEl.textContent = 'دوري نجوم قطر والفرق الكبرى';
     return;
   }
   
-  const home = esc(teamAr(bestEv.strHomeTeam, bestEv.idHomeTeam));
-  const away = esc(teamAr(bestEv.strAwayTeam, bestEv.idAwayTeam));
+  events.sort((a,b) => a.d - b.d);
+  
+  const todayStr = new Intl.DateTimeFormat('en-CA', {timeZone: CONFIG.timezone}).format(new Date());
+  const todayEvents = events.filter(x => new Intl.DateTimeFormat('en-CA', {timeZone: CONFIG.timezone}).format(x.d) === todayStr);
+  const activePool = todayEvents.length ? todayEvents : events;
+  
+  if(advance) BIG_MATCH_INDEX++;
+  BIG_MATCH_INDEX %= activePool.length;
+  
+  const {ev, diff, d} = activePool[BIG_MATCH_INDEX];
+  const isToday = todayEvents.length > 0;
+  
+  if(labelEl){
+    if(isToday){
+      labelEl.textContent = activePool.length > 1 ? `مباريات اليوم (${BIG_MATCH_INDEX + 1}/${activePool.length})` : 'مباراة اليوم ⚽';
+    } else {
+      labelEl.textContent = activePool.length > 1 ? `المباريات القادمة (${BIG_MATCH_INDEX + 1}/${activePool.length})` : 'مباراة النادي القادمة';
+    }
+  }
+  
+  const home = esc(teamAr(ev.strHomeTeam, ev.idHomeTeam));
+  const away = esc(teamAr(ev.strAwayTeam, ev.idAwayTeam));
   teamEl.innerHTML = `${home} <span style="color:var(--gold);font-size:.8em">✕</span> ${away}`;
   
-  if(minDiff <= 0 && minDiff > -2.5 * 3600000){
-    countEl.innerHTML = '<span class="live" style="color:var(--red);font-weight:700">مباشر الآن ⚽</span>';
+  const p = new Intl.DateTimeFormat('en-GB',{timeZone:CONFIG.timezone,hour:'2-digit',minute:'2-digit',hour12:false})
+    .formatToParts(d).reduce((a,x)=>(a[x.type]=x.value,a),{});
+  const t12 = fmt12(+p.hour % 24, +p.minute);
+  
+  if(diff <= 0 && diff > -2.5 * 3600000){
+    countEl.innerHTML = `<span class="live" style="color:var(--red);font-weight:700">مباشر الآن ⚽</span> · ${liveStatus(ev, t12)}`;
     return;
   }
   
-  const days = Math.floor(minDiff / 86400000);
-  const hours = Math.floor((minDiff % 86400000) / 3600000);
-  const mins = Math.floor((minDiff % 3600000) / 60000);
-  
-  let countdownText = 'متبقي: ';
-  if(days > 0) countdownText += `${ar(days)} يوم و `;
-  countdownText += `${ar(hours)} س و ${ar(mins)} د`;
-  countEl.textContent = countdownText;
+  if(isToday){
+    countEl.innerHTML = `اليوم الساعة <b>${t12}</b> · بعد ${shortRemaining(diff)}`;
+  } else {
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    let countdownText = 'متبقي: ';
+    if(days > 0) countdownText += `${days} يوم و `;
+    countdownText += `${hours} س و ${mins} د · (${t12})`;
+    countEl.textContent = countdownText;
+  }
 }
 
-// Every followed team with something to show, two at a time; the page turns every 15 s.
+// Every followed team with something to show, two at a time; turns every 2 minutes
 let MATCH_PAGE = 0;
 function renderMatches(turn){
-  updateBigMatchCountdown();
+  updateBigMatchCountdown(turn);
   const now = Date.now(), shown = new Set();
   const slots = CONFIG.teamIds.map(id => matchSlot(id, now, shown)).filter(Boolean);
   const row = document.getElementById('match-row');
@@ -1099,10 +1138,15 @@ async function loadMatches(){
   if(CONFIG.panel === 'matches') renderPanel(false);
 }
 
-const TICKERS = [
-  {sym:'^TASI.SR', chg:'tasi-chg'},
-  {sym:'^GSPC',    chg:'spx-chg'},
-  {cg:'bitcoin',   chg:'btc-chg'},
+const MARKET_MODE = (_Q.get('market') || 'qatar').toLowerCase();
+const TICKERS = MARKET_MODE === 'global' ? [
+  {sym:'^GSPC',    chg:'mkt-1-chg', lbl:'mkt-1-lbl', name:'S&P 500'},
+  {sym:'GC=F',     chg:'mkt-2-chg', lbl:'mkt-2-lbl', name:'الذهب'},
+  {cg:'bitcoin',   chg:'mkt-3-chg', lbl:'mkt-3-lbl', name:'بيتكوين'},
+] : [
+  {sym:'QNBK.QA',  chg:'mkt-1-chg', lbl:'mkt-1-lbl', name:'بورصة قطر (QNB)'},
+  {sym:'GC=F',     chg:'mkt-2-chg', lbl:'mkt-2-lbl', name:'الذهب'},
+  {sym:'BZ=F',     chg:'mkt-3-chg', lbl:'mkt-3-lbl', name:'النفط'},
 ];
 
 // never invent a direction: unknown hides the marker
@@ -1140,6 +1184,10 @@ async function yahooChart(sym){
 }
 
 async function loadTicker(t){
+  if(t.lbl && t.name){
+    const el = document.getElementById(t.lbl);
+    if(el) el.textContent = t.name;
+  }
   try{
     if(t.cg){                                  // crypto: CoinGecko, CORS friendly
       const r = await fetchT(`https://api.coingecko.com/api/v3/simple/price?ids=${t.cg}&vs_currencies=usd&include_24hr_change=true`, 10000);
@@ -1591,7 +1639,14 @@ document.addEventListener('keydown', e=>{
     if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
     else document.exitFullscreen().catch(()=>{});
   }
-  if(e.key === 't' || e.key === 'T' || e.key === 'm' || e.key === 'M'){
+  if(e.key === 't' || e.key === 'T' || e.key === 'm' || e.key === 'M' || e.key === 'Enter' || e.keyCode === 13){
+    cycleTheme();
+  }
+  // TV remote navigation: Left / Right switch match, Up / Down switch theme
+  if(e.key === 'ArrowRight' || e.keyCode === 39 || e.key === 'ArrowLeft' || e.keyCode === 37){
+    updateBigMatchCountdown(true);
+  }
+  if(e.key === 'ArrowUp' || e.keyCode === 38 || e.key === 'ArrowDown' || e.keyCode === 40){
     cycleTheme();
   }
 });
