@@ -293,7 +293,6 @@ public class MainActivity extends Activity {
 
         LinearLayout clockRow = new LinearLayout(this);
         clockRow.setGravity(Gravity.BOTTOM);
-        clockRow.setGravity(Gravity.TOP);
         clock = text(58, "display", 0xFFFFFDF6);
         clock.setIncludeFontPadding(false);
         ampm = text(16, "medium", GOLD);

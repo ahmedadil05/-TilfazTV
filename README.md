@@ -45,8 +45,8 @@
 
 - 🖼️ **تصميم الأطراف المفتوح (Edge-Based Layout):**  
   تم نقل كافة العناصر (الساعة، التاريخ الهجري والميلادي، الطقس، ومواقيت الصلاة) إلى الزوايا العلوية، مما يترك منتصف الشاشة نقياً بنسبة 100% لإبراز الخلفيات واللوحات الفنية.
-- 📱 **دوك التطبيقات الذكي (Smart 4-App Dock):**  
-  شريط سفلي مدمج بـ 4 تطبيقات أساسية (تطبيقات الجزيرة الإخبارية والوثائقية، TOD، beIN Sports، وشاهد) مع خوارزمية ذكية تحسب معدل الاستخدام وتعيد ترتيب التطبيقات الأكثر تشغيلاً للأمام تلقائياً.
+- 📱 **دوك التطبيقات الذكي (Smart Favorites Dock):**  
+  شريط سفلي للمفضلات قابل للتخصيص (٤–١٠ تطبيقات حسب السعة والإعدادات)، مع ترتيب تلقائي حسب الاستخدام. قد تتضمن الافتراضات تطبيقات إقليمية مثل الجزيرة وTOD وbeIN Sports وشاهد عند توفرها، ويمكن تعديلها بالضغط المطول أو عبر `optimize/dock.sh`.
 - ⚽ **عداد مباريات القمة التنازلي (Big Match Countdown):**  
   عداد تنازلي مباشر وحي لأقوى مواجهات القمة القطرية والعالمية (مثل السد ✕ الدحيل)، مع عرض النتائج والتوقيت الدقيق.
 - 🕌 **التقويم ومواقيت الصلاة وعداد رمضان:**  
@@ -108,7 +108,7 @@ adb install -r dist/urtv-home.apk
 ## 🌐 English Technical Documentation
 
 ### Overview
-**TilfazTV** is a premier Arabic home screen and ambient screensaver engineered for Android TV and Chromecast with Google TV devices. It features Qatari national iconography, Royal Amiri Gold styling, and spiritual Noor modes, combined with a 4-app customizable dock with usage learning.
+**TilfazTV** is a premier Arabic home screen and ambient screensaver engineered for Android TV and Chromecast with Google TV devices. It features Qatari national iconography, Royal Amiri Gold styling, and spiritual Noor modes, combined with a customizable favorites dock (4–10 apps) with usage-based ordering.
 
 ### Architecture & Components
 
@@ -119,7 +119,7 @@ TilfazTV/
 ├── dist/                   # Compiled artifacts and web bundles
 ├── android/
 │   ├── app/                # Screensaver APK (sa.urtv.screensaver) with DreamService
-│   └── launcher/           # Leanback Home Launcher (sa.urtv.home) with 4-app smart dock
+│   └── launcher/           # Leanback Home Launcher (sa.urtv.home) with customizable favorites dock
 ├── assets/                 # Thmanyah fonts, Qatar national background art, club data
 ├── setup.ps1               # Automated 1-click Windows installer with Wi-Fi network scanner
 └── AUTHORS.md              # Project author, maintainer, and upstream licenses
@@ -127,7 +127,7 @@ TilfazTV/
 
 ### Controls & Navigation
 - **Remote / Keyboard `T`:** Instantly cycles between Qatar Al-Adaam, Royal Amiri, and Noor themes.
-- **D-Pad & OK:** Navigates the 4-app dock (Al Jazeera, TOD, beIN Sports, Shahid) and launches native APKs.
+- **D-Pad & OK:** Navigates the favorites dock and app grid, then launches native APKs. Default favorites can include Al Jazeera, TOD, beIN Sports, and Shahid when installed (configurable; 4–10 apps).
 - **App Usage Tracking:** Records app launches in SharedPreferences to automatically bring your most frequently used apps forward.
 
 ---
@@ -141,7 +141,7 @@ TilfazTV/
   - Qatar National Theme (Al-Adaam Maroon `#580F23`) & Royal Amiri Gold (`#C5A059`)
   - Spiritual Noor Theme with Hadith and Ayat bracket calligraphy (`﴿ ﴾`, `ﷺ`)
   - Big Match live countdown engine (e.g. Al Sadd ✕ Al Duhail)
-  - 4-App smart dock with usage learning & Al Jazeera TV integration
+  - Customizable favorites dock (4–10 apps) with usage-based ordering; regional defaults may include Al Jazeera/TOD/beIN/Shahid (editable via config, long-press, or `optimize/dock.sh`)
   - Automated PowerShell setup for Windows (`setup.ps1`)
 
 ---

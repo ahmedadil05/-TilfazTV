@@ -351,7 +351,12 @@
     background: rgba(220, 184, 111, .25);
     border-color: var(--gold);
     transform: scale(1.04);
-    outline: none;
+  }
+  .theme-pill:focus:not(:focus-visible){ outline: none; }
+  .theme-pill:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(220, 184, 111, .22);
   }
   .theme-icon{font-size: 1.1em}
 
