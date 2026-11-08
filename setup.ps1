@@ -61,8 +61,10 @@ if (-not $adbCmd) {
 
 # 3. بناء الواجهة والقوالب
 Write-Step 3 "بناء ملفات الواجهة وخلفيات قطر الملكية..."
+if (-not (Test-Path "dist")) { New-Item -ItemType Directory -Path "dist" | Out-Null }
 try {
-    python src/build.py
+    & python src/build.py
+    if ($LASTEXITCODE -and $LASTEXITCODE -ne 0) { throw "build.py exited with code $LASTEXITCODE" }
     Write-Success "تم بناء ملفات الواجهة بنجاح في dist/"
 } catch {
     Write-Err "حدث خطأ أثناء بناء الواجهة: $_"
@@ -98,46 +100,67 @@ if (-not $tvIP) {
     $tvIP = Read-Host "لم يتم اكتشاف التلفزيون تلقائياً. اكتب عنوان IP الخاص بالتلفزيون (مثال: 192.168.1.55)"
 }
 
+$installOk = $false
 if ($tvIP) {
     Write-Step 5 "جاري الاتصال بالتلفزيون: $tvIP:5555 ..."
-    adb disconnect | Out-Null
-    $connectResult = adb connect "$($tvIP):5555"
-    Write-Host $connectResult -ForegroundColor Green
+    & adb disconnect | Out-Null
+    $connectResult = & adb connect "$($tvIP):5555" 2>&1
+    Write-Host ($connectResult | Out-String).Trim() -ForegroundColor Green
 
     Write-Host "`nتنبيه: إذا ظهرت نافذة «Allow USB debugging?» على شاشة التلفزيون، اضغط «السماح دائماً» (Always Allow)." -ForegroundColor Cyan
+    Start-Sleep -Seconds 2
 
-    $devices = adb devices
-    if ($devices -match "$tvIP.*device\b") {
+    $devices = & adb devices 2>&1 | Out-String
+    if ($devices -match [regex]::Escape($tvIP) + ".*\bdevice\b") {
         Write-Success "تم الاتصال بالتلفزيون بنجاح!"
 
-        # تثبيت التطبيقات إذا وجدت ملفات APK في dist أو تنزيل أحدث نسخة رسمية
-        $apks = Get-ChildItem -Path "dist", "optimize" -Filter "*.apk" -Recurse -ErrorAction SilentlyContinue
-        if (-not $apks) {
-            Write-Host "جاري فحص وتنزيل أحدث حزمة APK رسمية موقعة من GitHub..." -ForegroundColor Gray
-            try {
-                $releaseUrl = "https://github.com/ahmedadil05/-TilfazTV/releases/download/apk-latest/urtv-screensaver.apk"
-                Invoke-WebRequest -Uri $releaseUrl -OutFile "dist\urtv-screensaver.apk" -TimeoutSec 30
-                $apks = Get-ChildItem -Path "dist" -Filter "*.apk" -ErrorAction SilentlyContinue
-            } catch {
-                Write-Warn "تعذر التنزيل التلقائي لملف APK (يمكنك تشغيل الواجهة عبر المتصفح أو بناؤها محلياً)."
+        # تثبيت التطبيقات: استخدم ملفات dist/optimize إن وُجدت، وإلا جرّب تنزيل APKs الرسمية (شاشة التوقف + اللاونشر)
+        $apks = @(Get-ChildItem -Path "dist", "optimize" -Filter "*.apk" -File -Recurse -ErrorAction SilentlyContinue | Sort-Object FullName -Unique)
+        if ($apks.Count -eq 0) {
+            Write-Host "جاري تنزيل حزم APK الرسمية الموقعة من GitHub (إن توفرت)..." -ForegroundColor Gray
+            $releaseBase = "https://github.com/ahmedadil05/-TilfazTV/releases/download/apk-latest"
+            foreach ($name in @("urtv-screensaver.apk", "urtv-home.apk")) {
+                try {
+                    Invoke-WebRequest -Uri "$releaseBase/$name" -OutFile (Join-Path "dist" $name) -TimeoutSec 60 -ErrorAction Stop
+                    Write-Success "تم تنزيل $name"
+                } catch {
+                    Write-Warn "تعذر تنزيل $name من الإصدارات: $($_.Exception.Message)"
+                }
             }
+            $apks = @(Get-ChildItem -Path "dist" -Filter "*.apk" -File -ErrorAction SilentlyContinue | Sort-Object Name)
         }
-        if ($apks) {
+
+        if ($apks.Count -gt 0) {
             Write-Step 6 "تثبيت تطبيقات تلفازك · TilfazTV على التلفزيون..."
+            $allInstalled = $true
             foreach ($apk in $apks) {
                 Write-Host "تثبيت $($apk.Name)..." -ForegroundColor Gray
-                adb install -r $apk.FullName
+                $out = & adb -s "$($tvIP):5555" install -r $apk.FullName 2>&1 | Out-String
+                if ($out -match "\bSuccess\b") {
+                    Write-Success "تم تثبيت $($apk.Name)"
+                } else {
+                    $allInstalled = $false
+                    Write-Warn "نتيجة تثبيت $($apk.Name): $($out.Trim())"
+                }
             }
-            Write-Success "اكتمل تثبيت التطبيقات."
+            $installOk = $allInstalled
+            if ($installOk) { Write-Success "اكتمل تثبيت التطبيقات." } else { Write-Warn "اكتمل التثبيت مع تحذيرات — راجع الرسائل أعلاه." }
         } else {
-            Write-Host "ملحوظة: يمكنك تشغيل الواجهة مباشرة أو بناء APK عبر Android Studio." -ForegroundColor Gray
+            Write-Host "ملحوظة: لم يتم العثور على ملفات APK. يمكنك بناء APK عبر Android Studio/Gradle أو تشغيل الواجهة عبر المتصفح." -ForegroundColor Gray
         }
     } else {
-        Write-Warn "لم يتم تأكيد الاتصال بالتلفزيون بعد. يرجى الضغط على «Allow» على شاشة التلفزيون ثم إعادة المحاولة."
+        Write-Warn "لم يتم تأكيد الاتصال بالتلفزيون بعد. تأكد من ظهور رسالة الاتصال كـ device، واضغط «Allow» على شاشة التلفزيون ثم أعد المحاولة."
+        Write-Host $devices -ForegroundColor DarkGray
     }
 }
 
 Write-Host "`n==================================================================" -ForegroundColor Magenta
-Write-Host "                 اكتمل الإعداد بنجاح!                             " -ForegroundColor Green
+if ($installOk) {
+    Write-Host "                 اكتمل الإعداد والتثبيت بنجاح!                    " -ForegroundColor Green
+} elseif ($tvIP) {
+    Write-Host "           انتهى الإعداد مع ملاحظات — راجع الرسائل أعلاه          " -ForegroundColor Yellow
+} else {
+    Write-Host "      تم بناء الواجهة محلياً — أدخل IP التلفزيون للتثبيت لاحقاً   " -ForegroundColor Yellow
+}
 Write-Host "==================================================================`n" -ForegroundColor Magenta
 pause

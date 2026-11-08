@@ -44,16 +44,25 @@ public class MainActivity extends Activity {
                 case KeyEvent.KEYCODE_ENTER:
                 case KeyEvent.KEYCODE_DPAD_UP:
                 case KeyEvent.KEYCODE_DPAD_DOWN:
-                    if (web != null) web.evaluateJavascript("if(typeof cycleTheme==='function')cycleTheme();", null);
+                    evalDashboardJs("if(typeof cycleTheme==='function')cycleTheme();");
                     return true;
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if (web != null) web.evaluateJavascript("if(typeof updateBigMatchCountdown==='function')updateBigMatchCountdown(true);", null);
+                    evalDashboardJs("if(typeof updateBigMatchCountdown==='function')updateBigMatchCountdown(true);");
                     return true;
             }
         }
 
         return super.dispatchKeyEvent(e);
+    }
+
+    private void evalDashboardJs(String js) {
+        if (web == null || js == null) return;
+        try {
+            web.evaluateJavascript(js, null);
+        } catch (RuntimeException ignored) {
+            // Keep preview usable even if the WebView/page bridge is unavailable.
+        }
     }
 
     @Override
